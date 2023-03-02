@@ -1,0 +1,36 @@
+#inputToolbar {
+	display: flex;
+	padding: 15px 15px 10px;
+	font-size: 15px;
+	align-items: center;
+}
+
+#inputToolbar button {
+	border: none;
+	font-size: 30px;
+	background-color: inherit;
+	height: 30px;
+	cursor: pointer;
+	padding: 0;
+	margin: 1px 6px;
+}
+
+#inputToolbar form {
+	flex-grow: 2;
+	background-color: #f0f2f5;
+	border-radius: 17px;
+	display: flex;
+	align-items: center;
+	padding: 5px 0 5px 14px;
+}
+
+#inputToolbar form input {
+	width: calc(100% - 50px);
+	border: none;
+	background-color: inherit;
+	font-size: 17px;
+}
+
+#inputToolbar form input:focus {
+	outline: none;
+}

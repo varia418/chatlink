@@ -1,0 +1,29 @@
+.conversation {
+	/* border: 1px solid #edeff1; */
+	display: flex;
+	padding: 10px 25px;
+	cursor: pointer;
+}
+
+.conversation .right {
+	margin-left: 15px;
+	text-align: left;
+}
+
+.conversation .avatar {
+	width: 50px;
+	border-radius: 50%;
+}
+
+.conversation .title {
+	margin: 0;
+	font-size: 18px;
+}
+
+.conversation .latestMessage {
+	display: inline;
+}
+
+.conversation.selected {
+	background-color: #007ad2;
+}

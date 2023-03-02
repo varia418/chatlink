@@ -1,0 +1,8 @@
+#chatHeader {
+	border: 1px solid #edeff1;
+	text-align: left;
+	padding: 7px 15px;
+	font-weight: 500;
+	font-size: 19px;
+	border-left: none;
+}

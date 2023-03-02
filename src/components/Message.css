@@ -1,0 +1,16 @@
+.message {
+	text-align: left;
+	border: 2px solid #eaeced;
+	border-radius: 15px;
+	padding: 7px 15px;
+	width: fit-content;
+	max-width: 45%;
+	margin-bottom: 10px;
+	overflow-wrap: break-word;
+}
+
+.message.personal {
+	background-color: #eaeced;
+	margin-left: auto;
+	margin-right: 0;
+}

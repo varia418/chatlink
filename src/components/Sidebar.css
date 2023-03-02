@@ -1,0 +1,51 @@
+.sidebar {
+	border: 1px solid #edeff1;
+	/* padding: 15px 25px; */
+	padding: 15px 0;
+	display: flex;
+	flex-direction: column;
+	min-width: 20%;
+	overflow-x: auto;
+}
+
+.sidebar .header {
+	padding: 0 25px;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.sidebar h1 {
+	display: inline;
+	margin: 0;
+}
+
+.sidebar .createButton {
+	border: none;
+	background-color: white;
+	font-size: 25px;
+	color: #1e90ff;
+	cursor: pointer;
+}
+
+.sidebar .categories {
+	display: flex;
+	margin: 20px 0;
+	/* justify-content: space-evenly; */
+	padding: 0 25px;
+	gap: 0 25px;
+}
+
+.sidebar .category {
+	border-radius: 12px;
+	padding: 4px 8px;
+	cursor: pointer;
+}
+
+.category.selected {
+	background-color: #e9ebed;
+}
+
+.conversationContainer {
+	overflow-y: auto;
+}
