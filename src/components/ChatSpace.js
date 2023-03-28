@@ -1,46 +1,49 @@
 import './ChatSpace.css';
-import { useEffect } from "react";
-import Message from "./Message";
-import { useDispatch, useSelector } from 'react-redux';
-import { setMessages } from '../features/messagesSlice';
-import $ from 'jquery';
+import { useState, useEffect } from 'react';
+import InputToolbar from './InputToolbar';
+import { HubConnectionBuilder } from '@microsoft/signalr';
+import MessagesContainer from './MessagesContainer';
+import ChatHeader from './ChatHeader';
+import { useDispatch } from 'react-redux';
+import { addMessage } from '../features/messagesSlice';
 
-function ChatSpace(props) {
+export default function ChatSpace(props) {
     const dispatch = useDispatch();
-    const chatMessages = useSelector((state) => state.message)
+    const [connection, setConnection] = useState();
 
     useEffect(() => {
-        dispatch(setMessages([
-            { user: "user2", message: "This is a very super extreme mega ultra fantastic incredible spectacular freak ultimate remarkable notable stunning unbelievable exceeding extraordinaire phenomenal ever long message" },
-            { user: "user1", message: "test1" },
-            { user: "user1", message: "test2" },
-            { user: "user2", message: "test3" },
-            { user: "user1", message: "test4" },
-            { user: "user2", message: "test5" },
-            { user: "user1", message: "This is a very super extreme mega ultra fantastic incredible spectacular freak ultimate remarkable notable stunning unbelievable exceeding extraordinaire phenomenal ever long message" },
-            { user: "user1", message: "test1" },
-            { user: "user1", message: "test2" },
-            { user: "user2", message: "test3" },
-            { user: "user1", message: "test4" },
-            { user: "user 2", message: "kaudbuaibfcsjkxzcnvnmlcvnjosduihafounsjzakcnaskchbaskaudbuaibfcsjkxzcnvnmlcvnjosduihafounsjzakcnaskchbaskaudbuaibfcsjkxzcnvnmlcvnjosduihafounsjzakcnaskchbaskaudbuaibfcsjkxzcnvnmlcvnjosduihafounsjzakcnaskchbaskaudbuaibfcsjkxzcnvnmlcvnjosduihafounsjzakcnaskchbaskaudbuaibfcsjkxzcnvnmlcvnjosduihafounsjzakcnaskchbas" }
-        ]));
-    }, [])
+        const newConnection = new HubConnectionBuilder()
+            .withUrl('https://localhost:5001/hubs/chat')
+            .withAutomaticReconnect()
+            .build();
+
+        setConnection(newConnection);
+    }, []);
+
+
 
     useEffect(() => {
-        const messages = $(".message");
-        if (messages.length > 0) {
-            const last_element = messages[messages.length - 1];
-            last_element.scrollIntoView();
+        if (connection) {
+            connection.start()
+                .then(result => {
+                    console.log('Connected!');
+
+                    connection.on('ReceiveMessage', newMessage => {
+                        // const chatSpace = $("#chatSpace")[0];
+                        // chatSpace.appendChild(<Message key={Math.random()} message={newMessage.message} personal={newMessage.user === "user1"} />)
+                        // chatSpace.scrollTop = chatSpace.scrollHeight;
+                        dispatch(addMessage(newMessage));
+                    });
+                })
+                .catch(e => console.log('Connection failed: ', e));
         }
-    }, [chatMessages]);
+    }, [connection]);
 
     return (
         <div id='chatSpace'>
-            {
-                chatMessages && chatMessages.map(chatMessage => <Message key={Math.random()} message={chatMessage.message} personal={chatMessage.user === "user1"} />)
-            }
+            <ChatHeader />
+            <MessagesContainer />
+            <InputToolbar connection={connection} />
         </div>
-    )
+    );
 }
-
-export default ChatSpace;

@@ -12,7 +12,8 @@ connection.start()
         console.log('Connected!');
 
         connection.on('ReceiveMessage', newMessage => {
-            $("#chatSpace").append(<Message content={newMessage.content} personal={Math.random() < 0.5} />);
+            console.log(123);
+            // $("#messagesContainer").append(<Message content={newMessage.content} personal={Math.random() < 0.5} />);
         });
     })
     .catch(e => console.log('Connection failed: ', e));

@@ -10,8 +10,8 @@ export default function InputToolbar(props) {
         const isMessageProvided = message && message !== "";
         if (isMessageProvided) {
             const chatMessage = {
-                user: "Test_User",
-                message: message
+                userId: "1",
+                content: message
             };
 
             if (props.connection.state === "Connected") {

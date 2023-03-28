@@ -1,5 +1,5 @@
-.main #chatSpace {
-	flex-grow: 2;
-	padding: 20px;
-	overflow-y: scroll;
+#chatSpace {
+	display: flex;
+	flex-direction: column;
+	overflow-x: auto;
 }
