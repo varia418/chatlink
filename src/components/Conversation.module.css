@@ -5,22 +5,22 @@
 	cursor: pointer;
 }
 
-.conversation .right {
+.right {
 	margin-left: 15px;
 	text-align: left;
 }
 
-.conversation .avatar {
+.avatar {
 	width: 50px;
 	border-radius: 50%;
 }
 
-.conversation .title {
+.title {
 	margin: 0;
 	font-size: 18px;
 }
 
-.conversation .latestMessage {
+.latestMessage {
 	display: inline;
 }
 

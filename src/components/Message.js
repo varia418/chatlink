@@ -1,8 +1,8 @@
-import './Message.css'
+import styles from './Message.module.css'
 
 export default function Message(props) {
     return (
-        <div className={"message" + (props.personal ? " personal" : "")}>
+        <div className={styles.message + (props.personal ? ` ${styles.personal}` : "")}>
             {props.content}
         </div>
     );

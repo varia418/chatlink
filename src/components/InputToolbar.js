@@ -1,4 +1,4 @@
-import "./InputToolbar.css";
+import styles from "./InputToolbar.module.css";
 import { useState } from "react";
 
 export default function InputToolbar(props) {
@@ -35,12 +35,12 @@ export default function InputToolbar(props) {
     }
 
     return (
-        <div id='inputToolbar'>
+        <div id={styles.inputToolbar}>
             <button><ion-icon name="image-outline"></ion-icon></button>
             <button><ion-icon name="attach-outline"></ion-icon></button>
             <form onSubmit={sendMessage}>
-                <input id="textInput" value={message} onChange={updateMessage} />
-                <button className='emojiButton'><ion-icon name="happy-outline"></ion-icon></button>
+                <input id={styles.textInput} value={message} onChange={updateMessage} />
+                <button className={styles.emojiButton}><ion-icon name="happy-outline"></ion-icon></button>
             </form>
             <button onClick={sendMessage}><ion-icon name="chevron-forward-circle-outline"></ion-icon></button>
         </div>

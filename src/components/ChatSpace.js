@@ -1,4 +1,4 @@
-import './ChatSpace.css';
+import styles from './ChatSpace.module.css';
 import { useState, useEffect } from 'react';
 import InputToolbar from './InputToolbar';
 import { HubConnectionBuilder } from '@microsoft/signalr';
@@ -40,7 +40,7 @@ export default function ChatSpace(props) {
     }, [connection]);
 
     return (
-        <div id='chatSpace'>
+        <div id={styles.chatSpace}>
             <ChatHeader />
             <MessagesContainer />
             <InputToolbar connection={connection} />

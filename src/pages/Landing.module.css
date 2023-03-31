@@ -1,0 +1,69 @@
+#main {
+	padding-top: 58px;
+	height: 100vh;
+	background-color: #62d2a2;
+}
+
+.bubble::after {
+	content: "";
+	border-top-left-radius: 50% 50%;
+	border-top-right-radius: 50% 50%;
+	position: absolute;
+	bottom: 0;
+	/* z-index: -1; */
+	width: 100%;
+	background-color: #1fab89;
+	height: 75%;
+}
+
+#textingIllustration {
+	position: absolute;
+	bottom: 0;
+	right: 10%;
+}
+
+#card {
+	width: 40rem;
+	background-color: transparent;
+	border: none;
+	position: absolute;
+	bottom: 30%;
+	left: 10%;
+}
+
+.title {
+	font-size: 5rem;
+	font-family: "Anton", sans-serif;
+	color: white;
+}
+
+.text {
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: white;
+}
+
+.joinBtn {
+	background-color: white;
+	border: none;
+	color: #1fab89;
+	font-size: 1.5rem;
+	font-weight: 700;
+    margin-right: 25px;
+}
+
+.discoverBtn {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: white;
+	border-color: white;
+}
+
+button a {
+	text-decoration: none;
+	color: inherit;
+}
+
+button a:hover {
+    color: inherit;
+}

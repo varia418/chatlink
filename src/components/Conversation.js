@@ -1,4 +1,4 @@
-import './Conversation.css';
+import styles from './Conversation.module.css';
 import $ from 'jquery';
 import { useEffect, useRef } from 'react';
 
@@ -6,16 +6,17 @@ export default function Conversation(props) {
     const ref = useRef(null);
 
     function deselectPreviousConversation() {
-        const conversations = $(".conversation");
+        const conversations = $('.' + styles.conversation);
+        console.log(conversations);
         conversations.toArray().forEach(conversation => {
-            conversation.classList.remove("selected");
+            conversation.classList.remove(styles.selected);
         });
     }
 
     useEffect(() => {
         function selectConversation() {
             deselectPreviousConversation();
-            this.classList.add("selected");
+            this.classList.add(styles.selected);
         }
 
         const conversation = ref.current;
@@ -28,13 +29,13 @@ export default function Conversation(props) {
 
 
     return (
-        <div ref={ref} className="conversation">
-            <div className='left'>
-                <img className='avatar' src={require("../assets/jack-frost.jpg")} alt='avatar' />
+        <div ref={ref} className={styles.conversation}>
+            <div className={styles.left}>
+                <img className={styles.avatar} src={require("../assets/jack-frost.jpg")} alt='avatar' />
             </div>
-            <div className='right'>
-                <h2 className='title'>Jack Frost</h2>
-                <p className='latestMessage'>hello</p>
+            <div className={styles.right}>
+                <h2 className={styles.title}>Jack Frost</h2>
+                <p className={styles.latestMessage}>hello</p>
             </div>
         </div>
     );

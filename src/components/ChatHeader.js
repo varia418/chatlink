@@ -1,8 +1,8 @@
-import './ChatHeader.css';
+import styles from "./ChatHeader.module.css";
 
 function ChatHeader(props) {
     return (
-        <div id='chatHeader'>
+        <div id={styles.chatHeader}>
             Fantastic_Prune_4736
         </div>
     );

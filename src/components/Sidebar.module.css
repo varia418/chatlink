@@ -8,7 +8,7 @@
 	overflow-x: auto;
 }
 
-.sidebar .header {
+.header {
 	padding: 0 25px;
 	display: flex;
 	justify-content: space-between;
@@ -20,7 +20,7 @@
 	margin: 0;
 }
 
-.sidebar .createButton {
+.createButton {
 	border: none;
 	background-color: white;
 	font-size: 25px;
@@ -28,7 +28,7 @@
 	cursor: pointer;
 }
 
-.sidebar .categories {
+.categories {
 	display: flex;
 	margin: 20px 0;
 	/* justify-content: space-evenly; */
@@ -36,7 +36,7 @@
 	gap: 0 25px;
 }
 
-.sidebar .category {
+.category {
 	border-radius: 12px;
 	padding: 4px 8px;
 	cursor: pointer;
