@@ -7,7 +7,6 @@ export default function Conversation(props) {
 
     function deselectPreviousConversation() {
         const conversations = $('.' + styles.conversation);
-        console.log(conversations);
         conversations.toArray().forEach(conversation => {
             conversation.classList.remove(styles.selected);
         });

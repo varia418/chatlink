@@ -5,11 +5,48 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { ButtonGroup, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import $ from 'jquery';
+import { Alert } from "react-bootstrap";
+import Modal from 'react-bootstrap/Modal';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
+
 
 function Registration() {
-    function handleSubmit(e) {
+    const [modalShow, setModalShow] = useState(false);
+    const navigate = useNavigate();
+
+
+    async function handleSubmit(e) {
         e.preventDefault();
-        console.log("submitted");
+        const email = $("input[type='email']")[0].value;
+        const name = $("input[type='text']")[0].value;
+        const password = $("input[type='password']")[0].value;
+        const confirmationPassword = $("input[type='password']")[1].value;
+
+        const alertClassList = $("." + styles.alert)[0].classList;
+
+        if (!alertClassList.contains(styles.hide)) {
+            alertClassList.add(styles.hide)
+        }
+
+        if (password !== confirmationPassword) {
+            alertClassList.remove(styles.hide);
+            return;
+        }
+
+        try {
+            const userId = uuidv4();
+            const user = { userId, email, password, name }
+            const response = await axios.post(process.env.REACT_APP_API_URL + "/account/register", user)
+            if (response.status === 201) {
+                setModalShow(true)
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -17,9 +54,32 @@ function Registration() {
             <NavBar />
             <section id={styles.main}>
                 <div className={styles.bubble}></div>
+                <Modal
+                    show={modalShow}
+                    size="sm"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header closeButton onHide={() => setModalShow(false)}>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Congratulations
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>
+                            You have signed up successfully.
+                        </p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={() => navigate("/login")}>Login</Button>
+                    </Modal.Footer>
+                </Modal>
                 <Container className={styles.container}>
                     <Form onSubmit={handleSubmit}>
                         <h3>Create an account</h3>
+                        <Alert className={styles.alert + " " + styles.hide} variant="danger">
+                            The confirmation password does not match.
+                        </Alert>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" size="lg" placeholder="Enter email" />
@@ -36,7 +96,7 @@ function Registration() {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicReTypePassword">
-                            <Form.Label>Re-type password</Form.Label>
+                            <Form.Label>Confirm password</Form.Label>
                             <Form.Control type="password" size="lg" placeholder="Re-type password" />
                         </Form.Group>
 

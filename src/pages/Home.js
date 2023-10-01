@@ -1,10 +1,13 @@
-import styles from "./Landing.module.css";
+import styles from "./Home.module.css";
 import NavBar from "../components/NavBar";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { UseToken } from '../contexts/token';
 
-function Landing() {
+function Home() {
+    const { token } = UseToken();
+    console.log(token);
     return (
         <>
             <NavBar />
@@ -28,4 +31,4 @@ function Landing() {
     );
 }
 
-export default Landing;
+export default Home;

@@ -78,3 +78,12 @@
 	width: 100%;
 	margin-bottom: 10px;
 }
+
+.alert {
+    margin: 5px 0;
+    padding: 7px 10px;
+}
+
+.hide {
+    display: none;
+}

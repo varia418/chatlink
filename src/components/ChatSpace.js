@@ -29,9 +29,6 @@ export default function ChatSpace(props) {
                     console.log('Connected!');
 
                     connection.on('ReceiveMessage', newMessage => {
-                        // const chatSpace = $("#chatSpace")[0];
-                        // chatSpace.appendChild(<Message key={Math.random()} message={newMessage.message} personal={newMessage.user === "user1"} />)
-                        // chatSpace.scrollTop = chatSpace.scrollHeight;
                         dispatch(addMessage(newMessage));
                     });
                 })

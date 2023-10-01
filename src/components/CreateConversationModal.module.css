@@ -1,0 +1,18 @@
+.createConversationModal {
+	/* position: absolute; */
+	/* z-index: 3; */
+}
+
+#newConversationForm {
+}
+
+#createButton {
+}
+
+.modalFooter {
+	justify-content: flex-start;
+}
+
+.titleInput {
+	margin-bottom: 20px;
+}
